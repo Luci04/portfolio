@@ -11,7 +11,7 @@ export const DATA = {
     "Full-Stack Engineer passionate about solving real-world problems with clean, scalable code.",
   summary:
     "With over 2 years of professional experience, I specialize in delivering scalable web and mobile solutions using React, Node.js, and AWS. I’ve worked on everything from Chrome extensions and real-time games to production-ready SaaS platforms and cross-platform mobile apps. I also write about JavaScript and React on Medium and contribute to open-source projects.",
-  avatarUrl: "/me.png",
+  avatarUrl: "/me.jpg",
   skills: [
     "React",
     "Node.js",

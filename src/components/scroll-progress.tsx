@@ -50,4 +50,4 @@ export const ScrollProgressBottom = React.forwardRef<
   );
 });
 
-ScrollProgress.displayName = "ScrollProgressBottom";
+ScrollProgressBottom.displayName = "ScrollProgressBottom";
