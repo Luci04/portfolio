@@ -1,19 +1,36 @@
+"use client";
+
+import { AnimatedBeam } from "@/components/animated-bean";
 import { HackathonCard } from "@/components/hackathon-card";
+import { IconCloudDemo } from "@/components/icon-clouds";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
+import { RainbowButton } from "@/components/magicui/rainbow-btn";
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
+import {
+  ScrollProgress,
+  ScrollProgressBottom,
+} from "@/components/scroll-progress";
+import { SmoothCursor } from "@/components/smooth-scroll";
+import { SparklesText } from "@/components/sparkles-text";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
+import { useRef } from "react";
 import Markdown from "react-markdown";
 
 const BLUR_FADE_DELAY = 0.04;
 
 export default function Page() {
+  const containerRef = useRef(null);
+
   return (
-    <main className="flex flex-col min-h-[100dvh] space-y-10">
+    <main id="hero-start" className="flex flex-col min-h-[100dvh] space-y-10">
+      <ScrollProgress />
+      {/* <SmoothCursor /> */}
+
       <section id="hero">
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="gap-2 flex justify-between">
@@ -22,7 +39,8 @@ export default function Page() {
                 delay={BLUR_FADE_DELAY}
                 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
                 yOffset={8}
-                text={`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
+                text={`Hi, I'm`}
+                sparklingText={`${DATA.name.split(" ")[0]}`}
               />
               <BlurFadeText
                 className="max-w-[600px] md:text-xl"
@@ -42,6 +60,7 @@ export default function Page() {
       <section id="about">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
           <h2 className="text-xl font-bold">About</h2>
+          <RainbowButton>Get Unlimited Access</RainbowButton>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
           <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
@@ -97,7 +116,7 @@ export default function Page() {
           ))}
         </div>
       </section>
-      <section id="skills">
+      <section id="skills" ref={containerRef}>
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
             <h2 className="text-xl font-bold">Skills</h2>
@@ -110,6 +129,7 @@ export default function Page() {
             ))}
           </div>
         </div>
+        <IconCloudDemo />
       </section>
       <section id="projects">
         <div className="space-y-12 w-full py-12">
@@ -152,7 +172,7 @@ export default function Page() {
           </div>
         </div>
       </section>
-      <section id="hackathons">
+      {/* <section id="hackathons">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 13}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -219,7 +239,8 @@ export default function Page() {
             </div>
           </BlurFade>
         </div>
-      </section>
+      </section> */}
+      <ScrollProgressBottom />
     </main>
   );
 }
