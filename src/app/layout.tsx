@@ -1,5 +1,3 @@
-// app/layout.tsx
-
 import Navbar from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,13 +7,11 @@ import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 
-// Font config
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 });
 
-// ✅ SEO and Sharing Metadata
 export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
   title: {
@@ -24,26 +20,12 @@ export const metadata: Metadata = {
   },
   description: DATA.description,
   openGraph: {
-    title: DATA.name,
+    title: `${DATA.name}`,
     description: DATA.description,
     url: DATA.url,
-    siteName: DATA.name,
+    siteName: `${DATA.name}`,
     locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: "https://avinash-port.netlify.app/thumbnail.png", // ✅ Publicly accessible image
-        width: 1200,
-        height: 630,
-        alt: "Avinash Shukla Portfolio Thumbnail",
-      },
-    ],
-  },
-  twitter: {
-    title: DATA.name,
-    description: DATA.description,
-    card: "summary_large_image",
-    images: ["https://avinash-port.netlify.app/thumbnail.png"],
   },
   robots: {
     index: true,
@@ -56,16 +38,40 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  twitter: {
+    title: `${DATA.name}`,
+    card: "summary_large_image",
+  },
+  verification: {
+    google: "",
+    yandex: "",
+  },
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      {/* ❌ No manual <head> meta tags needed! */}
+      <head>
+        <meta
+          property="og:title"
+          content="Avinash Shukla - Full Stack Developer"
+        />
+        <meta
+          property="og:description"
+          content="Explore my portfolio, projects, and blog articles on web and mobile development."
+        />
+        <meta
+          property="og:image"
+          content="https://avinash-port.netlify.app/thumbnail.png"
+        />
+        <meta property="og:url" content="https://avinash-port.netlify.app/" />
+        <meta property="og:type" content="website" />
+      </head>
+
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6",
