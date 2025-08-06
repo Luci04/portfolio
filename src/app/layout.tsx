@@ -55,6 +55,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta
+          property="og:title"
+          content="Avinash Shukla - Full Stack Developer"
+        />
+        <meta
+          property="og:description"
+          content="Explore my portfolio, projects, and blog articles on web and mobile development."
+        />
+        <meta
+          property="og:image"
+          content="https://avinash-port.netlify.app/thumbnail.png"
+        />
+        <meta property="og:url" content="https://avinash-port.netlify.app/" />
+        <meta property="og:type" content="website" />
+      </head>
+
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6",
